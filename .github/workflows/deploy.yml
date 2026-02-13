@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Runs every time you push to the main branch
+      - main
 
 permissions:
   contents: read
@@ -22,15 +22,18 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install and Build
-        run: |
-          npm install
-          npm run build
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        # We use 'npm run build' which triggers your shell scripts
+        run: npm run build
 
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist # If your build output goes to a different folder (like 'build'), change this!
+          # This is the key change: your project outputs to 'website'
+          path: ./website 
 
       - name: Deploy to GitHub Pages
         id: deployment
