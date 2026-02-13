@@ -270,13 +270,37 @@ export class Config {
 	public static readonly partsPerBeat: number = 24;
 	public static readonly ticksPerPart: number = 2;
 	public static readonly rhythms: DictionaryArray<Rhythm> = toNameMap([
-		{name: "÷3 (triplets)", stepsPerBeat: 3, ticksPerArpeggio: 4, arpeggioPatterns: [[0], [0, 0, 1, 1], [0, 1, 2, 1]], roundUpThresholds: [/*0*/ 5, /*8*/ 12, /*16*/ 18 /*24*/]},
-		{name: "÷4 (standard)", stepsPerBeat: 4, ticksPerArpeggio: 3, arpeggioPatterns: [[0], [0, 0, 1, 1], [0, 1, 2, 1]], roundUpThresholds: [/*0*/ 3, /*6*/ 9, /*12*/ 17, /*18*/ 21 /*24*/]},
-		{name: "÷6",            stepsPerBeat: 6, ticksPerArpeggio: 4, arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
-		{name: "÷8",            stepsPerBeat: 8, ticksPerArpeggio: 3, arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
-		{name: "freehand",      stepsPerBeat:24, ticksPerArpeggio: 3, arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
-	]);
-	
+    {name: "÷1",             stepsPerBeat: 1,  ticksPerArpeggio: 24, arpeggioPatterns: [[0], [0, 0, 1, 1], [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷2",             stepsPerBeat: 2,  ticksPerArpeggio: 12, arpeggioPatterns: [[0], [0, 0, 1, 1], [0, 1, 2, 1]], roundUpThresholds: [6, 18]},
+    {name: "÷3 (triplets)",  stepsPerBeat: 3,  ticksPerArpeggio: 8,  arpeggioPatterns: [[0], [0, 0, 1, 1], [0, 1, 2, 1]], roundUpThresholds: [5, 12, 18]},
+    {name: "÷4 (standard)",  stepsPerBeat: 4,  ticksPerArpeggio: 6,  arpeggioPatterns: [[0], [0, 0, 1, 1], [0, 1, 2, 1]], roundUpThresholds: [3, 9, 12, 17, 21]},
+    {name: "÷5",             stepsPerBeat: 5,  ticksPerArpeggio: 5,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷6",             stepsPerBeat: 6,  ticksPerArpeggio: 4,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷7",             stepsPerBeat: 7,  ticksPerArpeggio: 3,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷8",             stepsPerBeat: 8,  ticksPerArpeggio: 3,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷9",             stepsPerBeat: 9,  ticksPerArpeggio: 3,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷10",            stepsPerBeat: 10, ticksPerArpeggio: 2,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷11",            stepsPerBeat: 11, ticksPerArpeggio: 2,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷12",            stepsPerBeat: 12, ticksPerArpeggio: 2,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷13",            stepsPerBeat: 13, ticksPerArpeggio: 2,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷14",            stepsPerBeat: 14, ticksPerArpeggio: 2,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷15",            stepsPerBeat: 15, ticksPerArpeggio: 2,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷16",            stepsPerBeat: 16, ticksPerArpeggio: 1,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷17",            stepsPerBeat: 17, ticksPerArpeggio: 1,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷18",            stepsPerBeat: 18, ticksPerArpeggio: 1,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷19",            stepsPerBeat: 19, ticksPerArpeggio: 1,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷20",            stepsPerBeat: 20, ticksPerArpeggio: 1,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷21",            stepsPerBeat: 21, ticksPerArpeggio: 1,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷22",            stepsPerBeat: 22, ticksPerArpeggio: 1,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷23",            stepsPerBeat: 23, ticksPerArpeggio: 1,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "freehand",       stepsPerBeat: 24, ticksPerArpeggio: 1,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷25",            stepsPerBeat: 25, ticksPerArpeggio: 1,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷26",            stepsPerBeat: 26, ticksPerArpeggio: 1,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷27",            stepsPerBeat: 27, ticksPerArpeggio: 1,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷28",            stepsPerBeat: 28, ticksPerArpeggio: 1,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷29",            stepsPerBeat: 29, ticksPerArpeggio: 1,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+    {name: "÷30",            stepsPerBeat: 30, ticksPerArpeggio: 1,  arpeggioPatterns: [[0], [0, 1],       [0, 1, 2, 1]], roundUpThresholds: null},
+]);
 	public static readonly instrumentTypeNames: ReadonlyArray<string> = ["chip", "FM", "noise", "spectrum", "drumset", "harmonics", "PWM", "Picked String", "supersaw"]; // See InstrumentType enum above.
 	public static readonly instrumentTypeHasSpecialInterval: ReadonlyArray<boolean> = [true, true, false, false, false, true, false, false, false];
 	public static readonly chipBaseExpression:      number = 0.03375; // Doubled by unison feature, but affected by expression adjustments per unison setting and wave shape.
