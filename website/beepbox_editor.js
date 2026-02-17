@@ -77,9 +77,9 @@ var beepbox = (function (exports) {
     Config.barCountMin = 1;
     Config.barCountMax = 128;
     Config.instrumentCountMin = 1;
-    Config.layeredInstrumentCountMax = 4;
+    Config.layeredInstrumentCountMax = Infinity;
     Config.patternInstrumentCountMax = 10;
-    Config.partsPerBeat = 144;
+    Config.partsPerBeat = 2520;
     Config.ticksPerPart = 25200;
    const rhythmList = [];
     // Loop through 1 to 50
@@ -117,7 +117,6 @@ var beepbox = (function (exports) {
             arpeggioPatterns: arpeggioPatterns,
             roundUpThresholds: roundUpThresholds
         });
-    }
     Config.rhythms = toNameMap(rhythmList);
     Config.instrumentTypeNames = ["chip", "FM", "noise", "spectrum", "drumset", "harmonics", "PWM", "Picked String", "supersaw"];
     Config.instrumentTypeHasSpecialInterval = [true, true, false, false, false, true, false, false, false];
