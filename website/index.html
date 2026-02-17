@@ -4,8 +4,8 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>BeepBox</title>
-	<meta name="application-name" content="BeepBox" />
-	<meta name="apple-mobile-web-app-title" content="BeepBox">
+	<meta name="application-name" content="TimeBox" />
+	<meta name="apple-mobile-web-app-title" content="TimeBox">
 	<meta name="description" content="BeepBox is an online tool for sketching and sharing instrumental music." />
 	<meta name="keywords" content="beepbox, music, composition, tool, synth, synthesizer, daw, tracker, instrument, song, melody, chiptune, free" />
 	<meta name="mobile-web-app-capable" content="yes" />
@@ -134,7 +134,7 @@
 				BeepBox
 			</h1>
 			<p id="introduction">
-				BeepBox is an online tool for sketching and sharing instrumental music. 
+				TimeBox is an online tool for sketching and sharing instrumental music. 
 			</p>
 			<p>
 				All song data is contained in the URL at the top of your browser. 
@@ -171,7 +171,7 @@
 						</span>
 					</p>
 					<p>
-						BeepBox can play several rows of patterns simultaneously, and each row has its own set of patterns. 
+						Timebox can play several rows of patterns simultaneously, and each row has its own set of patterns. 
 						Most rows can play melodies or harmonies, but the bottom row is for drums.
 					</p>
 					<p>
@@ -284,7 +284,7 @@
 				editor = new beepbox.SongEditor(document.getElementById("beepboxEditorContainer"));
 			});
 			// Point to the correct folder and file name
-                           fileref.setAttribute("src", "website/beepbox_editor.js");
+                           fileref.setAttribute("src", "beepbox_editor.js");
 			document.head.appendChild(fileref);
 		} else {
 			document.getElementById("beepboxEditorContainer").innerHTML = "Sorry, BeepBox doesn't support your browser. Try a recent version of Chrome, Firefox, Edge, Safari, or Opera.";
