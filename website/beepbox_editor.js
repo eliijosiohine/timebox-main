@@ -80,33 +80,32 @@ var beepbox = (function (exports) {
     Config.layeredInstrumentCountMax = 4;
     Config.patternInstrumentCountMax = 10;
     Config.partsPerBeat = 144;
-    Config.ticksPerPart = 2;
-   // Generate rhythms 1-50 automatically
-    const rhythmList = [];
+    Config.ticksPerPart = 25200;
+   const rhythmList = [];
+    // Loop through 1 to 50
     for (let i = 1; i <= 50; i++) {
+        
+        // Check if the current rhythm divides into 25200 perfectly
+        if (Config.partsPerBeat % i !== 0) {
+            continue; // Skip if it would cause corruption (decimal timing)
+        }
+
         let name = "÷" + i;
-        let ticksPerArpeggio = 3; // Default
+        let ticksPerArpeggio = 3;
         let roundUpThresholds = null;
-        // Default arpeggio pattern for most rhythms
         let arpeggioPatterns = [[0], [0, 1], [0, 1, 2, 1]];
 
-        // Preserve special settings from the original code
+        // Preserve special BeepBox labels
         if (i === 3) {
             name = "÷3 (triplets)";
             ticksPerArpeggio = 4;
             arpeggioPatterns = [[0], [0, 0, 1, 1], [0, 1, 2, 1]];
-            roundUpThresholds = [5, 12, 18];
+            roundUpThresholds = [Math.floor(Config.partsPerBeat/3 * 0.2), Math.floor(Config.partsPerBeat/3 * 0.5), Math.floor(Config.partsPerBeat/3 * 0.8)];
         } else if (i === 4) {
             name = "÷4 (standard)";
             ticksPerArpeggio = 3;
             arpeggioPatterns = [[0], [0, 0, 1, 1], [0, 1, 2, 1]];
-            roundUpThresholds = [3, 9, 17, 21];
-        } else if (i === 6) {
-            ticksPerArpeggio = 4;
-        } else if (i === 8) {
-            ticksPerArpeggio = 3;
-        } else if (i === 12) {
-            ticksPerArpeggio = 4;
+            roundUpThresholds = [Math.floor(Config.partsPerBeat/4 * 0.1), Math.floor(Config.partsPerBeat/4 * 0.4), Math.floor(Config.partsPerBeat/4 * 0.7), Math.floor(Config.partsPerBeat/4 * 0.9)];
         } else if (i === 24) {
             name = "freehand (÷24)";
         }
