@@ -79,15 +79,47 @@ var beepbox = (function (exports) {
     Config.instrumentCountMin = 1;
     Config.layeredInstrumentCountMax = 4;
     Config.patternInstrumentCountMax = 10;
-    Config.partsPerBeat = 24;
+    Config.partsPerBeat = 144;
     Config.ticksPerPart = 2;
-    Config.rhythms = toNameMap([
-        { name: "÷3 (triplets)", stepsPerBeat: 3, ticksPerArpeggio: 4, arpeggioPatterns: [[0], [0, 0, 1, 1], [0, 1, 2, 1]], roundUpThresholds: [5, 12, 18] },
-        { name: "÷4 (standard)", stepsPerBeat: 4, ticksPerArpeggio: 3, arpeggioPatterns: [[0], [0, 0, 1, 1], [0, 1, 2, 1]], roundUpThresholds: [3, 9, 17, 21] },
-        { name: "÷6", stepsPerBeat: 6, ticksPerArpeggio: 4, arpeggioPatterns: [[0], [0, 1], [0, 1, 2, 1]], roundUpThresholds: null },
-        { name: "÷8", stepsPerBeat: 8, ticksPerArpeggio: 3, arpeggioPatterns: [[0], [0, 1], [0, 1, 2, 1]], roundUpThresholds: null },
-        { name: "freehand", stepsPerBeat: 24, ticksPerArpeggio: 3, arpeggioPatterns: [[0], [0, 1], [0, 1, 2, 1]], roundUpThresholds: null },
-    ]);
+   // Generate rhythms 1-50 automatically
+    const rhythmList = [];
+    for (let i = 1; i <= 50; i++) {
+        let name = "÷" + i;
+        let ticksPerArpeggio = 3; // Default
+        let roundUpThresholds = null;
+        // Default arpeggio pattern for most rhythms
+        let arpeggioPatterns = [[0], [0, 1], [0, 1, 2, 1]];
+
+        // Preserve special settings from the original code
+        if (i === 3) {
+            name = "÷3 (triplets)";
+            ticksPerArpeggio = 4;
+            arpeggioPatterns = [[0], [0, 0, 1, 1], [0, 1, 2, 1]];
+            roundUpThresholds = [5, 12, 18];
+        } else if (i === 4) {
+            name = "÷4 (standard)";
+            ticksPerArpeggio = 3;
+            arpeggioPatterns = [[0], [0, 0, 1, 1], [0, 1, 2, 1]];
+            roundUpThresholds = [3, 9, 17, 21];
+        } else if (i === 6) {
+            ticksPerArpeggio = 4;
+        } else if (i === 8) {
+            ticksPerArpeggio = 3;
+        } else if (i === 12) {
+            ticksPerArpeggio = 4;
+        } else if (i === 24) {
+            name = "freehand (÷24)";
+        }
+
+        rhythmList.push({
+            name: name,
+            stepsPerBeat: i,
+            ticksPerArpeggio: ticksPerArpeggio,
+            arpeggioPatterns: arpeggioPatterns,
+            roundUpThresholds: roundUpThresholds
+        });
+    }
+    Config.rhythms = toNameMap(rhythmList);
     Config.instrumentTypeNames = ["chip", "FM", "noise", "spectrum", "drumset", "harmonics", "PWM", "Picked String", "supersaw"];
     Config.instrumentTypeHasSpecialInterval = [true, true, false, false, false, true, false, false, false];
     Config.chipBaseExpression = 0.03375;
