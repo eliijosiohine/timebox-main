@@ -283,7 +283,7 @@
 			fileref.addEventListener("load", function(event) {
 				editor = new beepbox.SongEditor(document.getElementById("beepboxEditorContainer"));
 			});
-			fileref.setAttribute("src", "beepbox_editor.min.js");
+			fileref.setAttribute("src", "website/3_0/beepbox_editor.min.js");
 			document.head.appendChild(fileref);
 		} else {
 			document.getElementById("beepboxEditorContainer").innerHTML = "Sorry, BeepBox doesn't support your browser. Try a recent version of Chrome, Firefox, Edge, Safari, or Opera.";
