@@ -83,7 +83,7 @@ var beepbox = (function (exports) {
     Config.ticksPerPart = 2;
    const rhythmList = [];
     // Loop through 1 to 50
-    for (let i = 1; i <= 50; i++) {
+    for (let i = 1; i <= 25200; i++) {
         
         // Check if the current rhythm divides into 25200 perfectly
         if (Config.partsPerBeat % i !== 0) {
