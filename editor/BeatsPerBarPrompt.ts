@@ -41,7 +41,7 @@ export class BeatsPerBarPrompt implements Prompt {
 	constructor(private _doc: SongDocument) {
 		this._beatsStepper.value = this._doc.song.beatsPerBar + "";
 		this._beatsStepper.min = Config.beatsPerBarMin + "";
-		this._beatsStepper.removeAttribute("max");
+                this._beatsStepper.max = Config.beatsPerBarMax + "";
 		
 		const lastStrategy: string | null = window.localStorage.getItem("beatCountStrategy");
 		if (lastStrategy != null) {
@@ -85,15 +85,8 @@ export class BeatsPerBarPrompt implements Prompt {
 		return false;
 	}
 	
-	private static _validateNumber(event: Event): void {
-		const input: HTMLInputElement = <HTMLInputElement>event.target;
-		input.value = String(BeatsPerBarPrompt._validate(input));
-	}
-	
 	private static _validate(input: HTMLInputElement): number {
-    // We remove Math.min entirely so there is no upper limit check.
-    // We keep Math.max so the user can't enter 0 or negative numbers.
-    return Math.floor(Math.max(Number(input.min), Number(input.value)));
+    return Math.floor(Math.max(Number(input.min), Math.min(Number(input.max), Number(input.value))));
 }
 	
 	private _saveChanges = (): void => {
