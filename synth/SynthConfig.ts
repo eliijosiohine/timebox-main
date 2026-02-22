@@ -260,10 +260,10 @@ export class Config {
 	public static readonly reverbRange: number = 4;
 	public static readonly reverbDelayBufferSize: number = 16384; // TODO: Compute a buffer size based on sample rate.
 	public static readonly reverbDelayBufferMask: number = Config.reverbDelayBufferSize - 1; // TODO: Compute a buffer size based on sample rate.
-	public static readonly beatsPerBarMin: number = 3;
-	public static readonly beatsPerBarMax: number = 16;
-	public static readonly barCountMin: number = 1;
-	public static readonly barCountMax: number = 128;
+	public static readonly beatsPerBarMin: number = -Infinity;
+	public static readonly beatsPerBarMax: number = Infinity;
+	public static readonly barCountMin: number = -Infinity;
+	public static readonly barCountMax: number = Infinity;
 	public static readonly instrumentCountMin: number = 1;
 	public static readonly layeredInstrumentCountMax: number = 4;
 	public static readonly patternInstrumentCountMax: number = 10;
